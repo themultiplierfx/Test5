@@ -1,45 +1,87 @@
-<!DOCTYPE html><html lang="en"><head><meta charset="UTF-8"><meta name="viewport" content="width=device-width,initial-scale=1"><title>TMFX V4.8.0 FULL</title><style>*{box-sizing:border-box;font-family:Arial}body{margin:0;padding:10px 10px 100px 10px;background:#020b1a;display:flex;flex-direction:column;align-items:center;min-height:100vh}.card{background:#0a1a2e;border:1px solid #1e3a5f;border-radius:12px;padding:12px;width:100%;max-width:700px;margin:auto}label{font-size:8.5px;color:#7aa3c7;display:block;margin-top:6px;font-weight:700}input,select{width:100%;background:#061a33;border:1px solid #1a3a5a;color:#fff;padding:12px;border-radius:8px;margin-top:3px}.g3{display:grid;grid-template-columns:1fr 1fr 1fr;gap:6px}.g2{display:grid;grid-template-columns:1fr 1fr;gap:8px}.btnRed{width:100%;background:#dc2626;color:#fff;border:0;padding:14px;border-radius:8px;font-weight:900;margin-top:12px;cursor:pointer}.btnBlue{width:100%;background:#0f2d5a;color:#60a5fa;border:2px solid #3b82f6;padding:12px;border-radius:8px;margin-top:12px;font-weight:900;cursor:pointer}.btnGold{width:100%;background:#fbbf24;color:#000;border:0;padding:14px;border-radius:8px;font-weight:900;margin-top:8px;cursor:pointer}.hlBox{border:1px solid #1e3a5f;border-radius:10px;padding:12px;margin-top:12px;background:#081428}.lotBox{background:#0d2818;border:2px solid #22c55e;border-radius:10px;padding:12px;margin-top:12px}.hidden{display:none!important}table{width:100%;border-collapse:collapse;margin-top:12px}td{border:1px solid #000;padding:9px;text-align:center;font-size:10px;font-weight:700}.red{background:#dc2626;color:#fff;font-size:16px;font-weight:900}.dark{background:#0a0a0a;color:#fff}.gray{background:#2a2f3a;color:#fff}.r{background:#2e1f0a;color:#ffcc80}.p{background:#000;color:#fff}.s{background:#1a2a0a;color:#c5ff80}.resultHead{background:#000;color:#fbbf24;font-weight:900;font-size:11px;border:2px solid #fbbf24}.yellowCell{background:#000!important;color:#facc15!important;border:2px solid #fbbf24!important}.greenCell{background:#000!important;color:#22c55e!important;border:2px solid #22c55e!important}#apiStatus{font-size:10px;text-align:center;margin-top:8px;font-weight:900;padding:6px;border-radius:6px;background:#052e16;color:#22c55e}.footer{text-align:center;padding:16px;background:#081428;border:1px solid #1e3a5f;border-radius:12px;color:#7aa3c7;font-size:11px;width:100%;max-width:700px;margin-top:20px}.tradeInfo{background:#000;border:2px solid #fbbf24;border-radius:8px;padding:10px;margin-bottom:10px;text-align:center;color:#fbbf24;font-weight:900;font-size:11px}.historyBox{border:2px solid #fbbf24;background:#1a1500;border-radius:12px;padding:14px;margin-top:12px;width:100%;max-width:700px}.sigBox{max-width:700px;width:100%;margin:10px auto;background:#0f172a;border:1.5px solid #334155;border-radius:16px;padding:18px;text-align:center}</style></head><body>
-
-<div class="sigBox" id="sigFront"><div style="color:#fbbf24;font-weight:900;font-size:14px">TMFX V4.8.0 - FULL FINAL</div><div style="color:#facc15;font-size:11px;margin-top:4px">📧 TheMultiplierFx@gmail.com | 3 SETS | FULL DATA</div></div>
-
-<div class="card" id="mainCard">
-<div style="text-align:center;color:#fbbf24;font-weight:900">TMFX V4.8.0 🔓</div>
-
-<div id="box0" class="hlBox" style="border:2px solid #fbbf24;background:#1a1500"><b style="color:#fbbf24">BOX 0: VIP ACCESS</b><input id="traderId" type="password" placeholder="Enter Trader ID"><button onclick="unlockNow()" style="width:100%;background:#1a1500;color:#fbbf24;border:2px solid #fbbf24;padding:14px;border-radius:8px;font-weight:900;margin-top:10px;cursor:pointer">UNLOCK VIP</button><div id="vipStatus" style="text-align:center;font-size:10px;color:#7aa3c7;margin-top:6px"></div></div>
-
-<div id="box1" class="hlBox hidden"><b style="color:#fbbf24">BOX 1: SELECT PAIR</b><div class="g2" style="margin-top:8px"><div><label>PAIR</label><select id="pairD" onchange="selectPair(this.value)"><option>GOLD</option><option selected>EURUSD</option><option>GBPUSD</option><option>USDJPY</option><option>USDCAD</option><option>BTCUSD</option><option>GBPCAD</option></select></div><div><label>MODE</label><select id="modeD" onchange="changeMode()" style="background:#1a1500;color:#fbbf24;border:2px solid #fbbf24"><option value="auto" selected>AUTO API</option><option value="manual">MANUAL</option></select></div></div><div id="apiStatus">● READY - API LIVE</div><button class="btnGold" style="background:#1a1500;color:#fbbf24;border:2px solid #fbbf24" onclick="showHLCBox()">📊 SHOW HLC →</button></div>
-
-<div id="box2" class="hlBox hidden"><b style="color:#fbbf24">BOX 2: HLC INPUT</b><div class="g3" style="margin-top:6px"><div><label>DAILY HIGH</label><input id="dh" type="number"></div><div><label>DAILY LOW</label><input id="dl" type="number"></div><div><label>DAILY CLOSE</label><input id="dc" type="number"></div></div><div class="g3" style="margin-top:6px"><div><label>WEEKLY HIGH</label><input id="wh" type="number"></div><div><label>WEEKLY LOW</label><input id="wl" type="number"></div><div><label>WEEKLY CLOSE</label><input id="wc" type="number"></div></div><button class="btnBlue" onclick="calcHLCOnly()">CALCULATE → SHOW R/S TABLE</button><button class="btnBlue" style="background:#1a0a0a;color:#7aa3c7;border-color:#444" onclick="backToBox1()">← BACK TO PAIR</button></div>
-
-<div id="box3" class="hlBox hidden"><div id="tradeInfoBox" class="tradeInfo hidden"></div><b style="color:#fbbf24">BOX 3: R/S TABLE</b><div id="pivotPart"><table><tr><td colspan="3" class="red" id="pName">EURUSD</td></tr><tr><td class="dark"></td><td class="gray">DAILY</td><td class="gray">WEEKLY</td></tr><tr><td class="r">R5</td><td class="r" id="dR5">-</td><td class="r" id="wR5">-</td></tr><tr><td class="r">R4</td><td class="r" id="dR4">-</td><td class="r" id="wR4">-</td></tr><tr><td class="r">R3</td><td class="r" id="dR3">-</td><td class="r" id="wR3">-</td></tr><tr><td class="r">R2</td><td class="r" id="dR2">-</td><td class="r" id="wR2">-</td></tr><tr><td class="r">R1</td><td class="r" id="dR1">-</td><td class="r" id="wR1">-</td></tr><tr><td class="p">P</td><td class="p" id="dP">-</td><td class="p" id="wP">-</td></tr><tr><td class="s">S1</td><td class="s" id="dS1">-</td><td class="s" id="wS1">-</td></tr><tr><td class="s">S2</td><td class="s" id="dS2">-</td><td class="s" id="wS2">-</td></tr><tr><td class="s">S3</td><td class="s" id="dS3">-</td><td class="s" id="wS3">-</td></tr><tr><td class="s">S4</td><td class="s" id="dS4">-</td><td class="s" id="wS4">-</td></tr><tr><td class="s">S5</td><td class="s" id="dS5">-</td><td class="s" id="wS5">-</td></tr></table></div><button class="btnBlue" style="background:#1a0a0a;color:#7aa3c7;border-color:#444" onclick="backToBox2()">← BACK TO HLC - CORRECT</button></div>
-
-<div id="box4" class="hlBox hidden"><b style="color:#60a5fa">BOX 4: TRADE SETUP</b><div style="margin-top:8px"><label style="color:#22c55e">CURRENT PRICE</label><input id="cpD" type="number" style="border:2px solid #22c55e;background:#052e16"></div><div class="g2" style="margin-top:8px"><div><label>SL</label><input id="slD" type="number"></div><div><label>TP</label><input id="tpD" type="number"></div></div></div>
-
-<div id="box5" class="lotBox hidden"><b style="color:#22c55e">BOX 5: SAFE LOT (5% reserved)</b><div style="display:flex;gap:6px;margin-top:8px"><input id="balInput" type="number" style="flex:2;border:2px solid #fbbf24" oninput="calcBalance()" placeholder="Balance"><select id="balType" onchange="calcBalance()" style="flex:1;background:#1a1500;color:#fbbf24;border:2px solid #fbbf24"><option value="" disabled selected>TYPE</option><option value="dollar">Dollar $</option><option value="cent">Cent ¢</option></select></div><div id="balShow" style="text-align:center;font-size:10px;color:#fff;margin-top:8px;background:#1a1500;padding:6px;border-radius:6px">Enter balance + type</div><button class="btnRed" onclick="doCalculate()">CALCULATE → RESULT</button></div>
-
-<div id="box6" class="hlBox hidden" style="border-color:#fbbf24;background:#000"><b style="color:#fbbf24">BOX 6: RESULT - 100%balance+prof</b><div id="lotPart"><table><tr><td class="resultHead">RESULT</td><td class="resultHead">Dollar $</td><td class="resultHead">Cent ¢</td></tr><tr><td class="resultHead" style="color:#22c55e;border-color:#22c55e">BALANCE 95%</td><td class="greenCell" id="balD">-</td><td class="greenCell" id="balC">-</td></tr><tr><td class="resultHead">APPROVAL</td><td class="yellowCell" id="appD">-</td><td class="yellowCell" id="appC">-</td></tr><tr><td class="resultHead" style="color:#60a5fa;border-color:#3b82f6">LOT SIZE ⭐</td><td class="yellowCell" id="lotD">-</td><td class="yellowCell" id="lotC">-</td></tr><tr><td class="resultHead" style="color:#4ade80;border-color:#22c55e">PROFIT 💰</td><td class="yellowCell" id="profD">-</td><td class="yellowCell" id="profC">-</td></tr><tr><td class="resultHead" style="color:#fbbf24">100%balance+prof<br><span style="font-size:7px">FULL BAL + PROFIT</span></td><td class="yellowCell" id="totD">-</td><td class="yellowCell" id="totC">-</td></tr></table></div><button class="btnGold" style="background:#052e16;color:#22c55e;border:2px solid #22c55e" onclick="saveHistory()">💾 Save - 3 SETS MAX</button><button class="btnBlue" onclick="doReset()">RESET ALL</button></div>
-</div>
-
-<div id="box7" class="historyBox hidden"><div style="text-align:center;color:#fbbf24;font-weight:900;font-size:13px">📚 HISTORY - 3 SETS ONLY | FULL DATA</div><div id="historyList"></div><button class="btnGold" style="margin-top:14px;background:#1a1500;color:#fbbf24;border:2px solid #fbbf24" onclick="backToCalc()">🔄 BACK TO CALCULATOR</button><button class="btnRed" style="background:#7f1d1d;margin-top:8px" onclick="clearHist()">🗑️ CLEAR 3 SETS</button></div>
-
-<div class="footer">5% reserved safe | TOTAL = 100%balance+prof | Trade responsibly!</div>
-
+<!-- SAME AS YOUR V4.6.7 UP TO SCRIPT, ONLY HISTORY PART CHANGED -->
 <script>
-function showHLCBox(){document.getElementById('box1').classList.add('hidden');document.getElementById('box2').classList.remove('hidden');}
-function backToBox1(){document.getElementById('box2').classList.add('hidden');document.getElementById('box1').classList.remove('hidden');}
-function backToBox2(){document.getElementById('box3').classList.add('hidden');document.getElementById('box4').classList.add('hidden');document.getElementById('box5').classList.add('hidden');document.getElementById('box6').classList.add('hidden');document.getElementById('box2').classList.remove('hidden');document.getElementById('box1').classList.remove('hidden');}
-function unlockNow(){localStorage.setItem('tmfx_vip_saved','yes');document.getElementById('box0').classList.add('hidden');document.getElementById('box1').classList.remove('hidden');document.getElementById('sigFront').classList.add('hidden');autoFillAPI(pairD.value);}
-function doReset(){document.getElementById('box0').classList.add('hidden');document.getElementById('box1').classList.remove('hidden');document.getElementById('box2').classList.add('hidden');document.getElementById('box3').classList.add('hidden');document.getElementById('box4').classList.add('hidden');document.getElementById('box5').classList.add('hidden');document.getElementById('box6').classList.add('hidden');dh.value=dl.value=dc.value=wh.value=wl.value=wc.value=cpD.value=slD.value=tpD.value=balInput.value='';}
-function backToCalc(){document.getElementById('mainCard').classList.remove('hidden');document.getElementById('box7').classList.add('hidden');document.getElementById('box0').classList.add('hidden');document.getElementById('box1').classList.remove('hidden');document.getElementById('box2').classList.add('hidden');document.getElementById('box3').classList.add('hidden');document.getElementById('box4').classList.add('hidden');document.getElementById('box5').classList.add('hidden');document.getElementById('box6').classList.add('hidden');}
-window.addEventListener('load',()=>{if(localStorage.getItem('tmfx_vip_saved')==='yes'){document.getElementById('box0').classList.add('hidden');document.getElementById('box1').classList.remove('hidden');document.getElementById('sigFront').classList.add('hidden');autoFillAPI(pairD.value);}});
-function selectPair(p){document.getElementById('pairD').value=p;document.getElementById('pName').innerText=p;autoFillAPI(p);}
-function getX(p){p=p.toUpperCase();if(p.includes('GOLD')||p.includes('XAU'))return 100;return 100000;}
-function priceDecimals(p){if(p.includes('JPY'))return 3;if(p.includes('GOLD')||p.includes('XAU'))return 2;return 5;}
-function levels(H,L,C){if(!H||!L||!C)return null;let P=(H+L+C)/3;return{R5:H+4*(P-L),R4:H+3*(P-L),R3:H+2*(P-L),R2:P+(H-L),R1:2*P-L,P:P,S1:2*P-H,S2:P-(H-L),S3:L-2*(H-P),S4:L-3*(H-P),S5:L-4*(H-P)};}
-let balDollar=0,balCent=0,balDollar95=0,balCent95=0;
-function calcBalance(){let v=+balInput.value||0,t=balType.value;if(!t||!v)return false;if(t=='dollar'){balDollar=v;balCent=v*100;}else{balCent=v;balDollar=v/100;}balDollar95=balDollar*0.95;balCent95=balCent*0.95;balShow.innerText=`Full $${balDollar.toFixed(2)} | 95% $${balDollar95.toFixed(2)}`;balD.innerText='$'+balDollar95.toFixed(2);balC.innerText=balCent95.toFixed(2)+'¢';return true;}
-function calcDaily(){let o=levels(+dh.value,+dl.value,+dc.value);if(!o)return;let d=priceDecimals(pairD.value);['R5','R4','R3','R2','R1','P','S1','S2','S3','S4','S5'].forEach(k=>document.getElementById('d'+k).innerText=o[k].toFixed(d));}
-function calcWeekly(){let o=levels(+wh.value,+wl.value,+wc.value);if(!o)return;let d=priceDecimals(pairD.value);['R5','R4','R3','R2','R1','P','S1','S2','S3','S4','S5'].forEach(k=>document.getElementById('w'+k).innerText=o[k].toFixed(d));}
-function calcHLCOnly(){if(!dh.value||!dl.value||!dc.value){alert('Fill Daily HLC');return;}calcDaily();calcWeekly();box1.classList.add('hidden');box2.classList.add('hidden');box3.classList.remove('hidden');box4.classList.remove('hidden');box5.classList.remove('hidden');}
-function changeMode(){if(modeD.value=='manual'){apiStatus.innerText='MANUAL MODE';}else{autoFillAPI(pairD.value);}}
-function calcLot(){calcBalance();let X=getX(pairD.value),cp=+cpD.value,sl=+slD.value,tp=+tpD.value;if(!cp||!sl||!tp){alert('Fill Current Price, SL, TP');return false;}let YD=Math.abs(cp-sl)*X,ZD=Math.abs(cp-tp)*X;let lD=
+// ... keep all your functions same until saveHistory ...
+
+// === FIXED HISTORY - 3 SETS ONLY + 5 BUTTONS + FULL DATA ===
+function saveHistory(){
+if(lotD.innerText=='-'||lotD.innerText==''){alert('Calculate first');return;}
+let trade={
+id:Date.now(),
+pair:pairD.value,
+cp:cpD.value,
+sl:slD.value,
+tp:tpD.value,
+dh:dh.value, dl:dl.value, dc:dc.value,
+wh:wh.value, wl:wl.value, wc:wc.value,
+dR5:dR5.innerText, dR4:dR4.innerText, dR3:dR3.innerText, dR2:dR2.innerText, dR1:dR1.innerText, dP:dP.innerText, dS1:dS1.innerText, dS2:dS2.innerText, dS3:dS3.innerText, dS4:dS4.innerText, dS5:dS5.innerText,
+wR5:wR5.innerText, wR4:wR4.innerText, wR3:wR3.innerText, wR2:wR2.innerText, wR1:wR1.innerText, wP:wP.innerText, wS1:wS1.innerText, wS2:wS2.innerText, wS3:wS3.innerText, wS4:wS4.innerText, wS5:wS5.innerText,
+balFull:balInput.value, balType:balType.value,
+bal95D:balD.innerText, bal95C:balC.innerText,
+lotD:lotD.innerText, lotC:lotC.innerText,
+profD:profD.innerText, profC:profC.innerText,
+totD:totD.innerText, totC:totC.innerText,
+appD:appD.innerText, appC:appC.innerText,
+date:new Date().toLocaleString()
+};
+let hist=JSON.parse(localStorage.getItem('tmfx_history')||'[]');
+hist.unshift(trade);
+hist=hist.slice(0,3); // 3 SETS ONLY
+localStorage.setItem('tmfx_history',JSON.stringify(hist));
+mainCard.classList.add('hidden');box7.classList.remove('hidden');
+loadHist();
+}
+
+function getFullText(h){
+return `TMFX V4.6.7 FULL REPORT - 3 SETS
+━━━━━━━━━━━━━━━
+PAIR: ${h.pair}
+CURRENT PRICE: ${h.cp}
+SL: ${h.sl} | TP: ${h.tp}
+
+HLC DAILY: H=${h.dh} L=${h.dl} C=${h.dc}
+HLC WEEKLY: H=${h.wh} L=${h.wl} C=${h.wc}
+
+R/S DAILY: R5=${h.dR5} R4=${h.dR4} R3=${h.dR3} R2=${h.dR2} R1=${h.dR1} P=${h.dP} S1=${h.dS1} S2=${h.dS2} S3=${h.dS3} S4=${h.dS4} S5=${h.dS5}
+R/S WEEKLY: R5=${h.wR5} R4=${h.wR4} R3=${h.wR3} R2=${h.wR2} R1=${h.wR1} P=${h.wP} S1=${h.wS1} S2=${h.wS2} S3=${h.wS3} S4=${h.wS4} S5=${h.wS5}
+
+BALANCE:
+Type: ${h.balType} Full: ${h.balFull}
+95% D: ${h.bal95D} | 95% C: ${h.bal95C}
+
+LOT CALC:
+Approval D:${h.appD} C:${h.appC}
+LOT D:${h.lotD} C:${h.lotC}
+PROFIT D:$${h.profD} C:${h.profC}¢
+100%balance+prof D:$${h.totD} C:${h.totC}¢
+Date: ${h.date}
+━━━━━━━━━━━━━━━`;
+}
+
+function loadHist(){
+let hist=JSON.parse(localStorage.getItem('tmfx_history')||'[]');
+let list=document.getElementById('historyList');
+if(!hist.length){list.innerHTML='<div style="text-align:center;color:#7aa3c7;padding:10px">No history</div>';return;}
+list.innerHTML=hist.map((h,i)=>`
+<div class="histItem">
+<b style="color:#fbbf24">${h.pair} | ${h.cp} | ${h.date}</b>
+<div style="color:#fff;font-size:10px;margin-top:4px">Lot D:${h.lotD} C:${h.lotC} | 100%balance+prof $${h.totD} | 95% ${h.bal95D}</div>
+<div style="display:grid;grid-template-columns:1fr 1fr;gap:6px;margin-top:8px">
+<button style="background:#0f2d5a;color:#60a5fa;border:1px solid #3b82f6;padding:11px;border-radius:6px;font-weight:900;font-size:9px" onclick="recallTrade(${i})">📞 RECALL</button>
+<button style="background:#1e3a5f;color:#7dd3fc;border:1px solid #38bdf8;padding:11px;border-radius:6px;font-weight:900;font-size:9px" onclick="shareCopy(${i})">🔗 SHARE</button>
+<button style="background:#fbbf24;color:#000;padding:11px;border-radius:6px;font-weight:900;font-size:9px" onclick="exportOne(${i})">📤 EXPORT</button>
+<button style="background:#128c7e;color:#fff;padding:11px;border-radius:6px;font-weight:900;font-size:9px" onclick="shareWA(${i})">📱 WhatsApp</button>
+<button style="background:#052e16;color:#22c55e;border:1px solid #22c55e;padding:11px;border-radius:6px;font-weight:900;font-size:9px;grid-column:span 2" onclick="copyOne(${i})">📋 COPY FULL DATA</button>
+</div>
+</div>`).join('');
+}
+function recallTrade(i){let h=JSON.parse(localStorage.getItem('tmfx_history')||'[]')[i];pairD.value=h.pair;cpD.value=h.cp;slD.value=h.sl;tpD.value=h.tp;dh.value=h.dh;dl.value=h.dl;dc.value=h.dc;wh.value=h.wh;wl.value=h.wl;wc.value=h.wc;backToCalc();}
+function shareWA(i){let h=JSON.parse(localStorage.getItem('tmfx_history')||'[]')[i];window.open('https://api.whatsapp.com/send?text='+encodeURIComponent(getFullText(h)),'_blank');}
+function shareCopy(i){let h=JSON.parse(localStorage.getItem('tmfx_history')||'[]')[i];navigator.clipboard.writeText(getFullText(h));alert('FULL DATA Copied for Share');}
+function copyOne(i){let h=JSON.parse(localStorage.getItem('tmfx_history')||'[]')[i];navigator.clipboard.writeText(getFullText(h));alert('FULL DATA Copied!');}
+function exportOne(i){let h=JSON.parse(localStorage.getItem('tmfx_history')||'[]')[i];let blob=new Blob([getFullText(h)],{type:'text/plain'});let url=URL.createObjectURL(blob);let a=document.createElement('a');a.href=url;a.download=`TMFX_${h.pair}_FULL_${h.id}.txt`;a.click();}
+
+// Update TOTAL label
+document.addEventListener('DOMContentLoaded',()=>{
+document.getElementById('totD').parentElement.querySelector('td').innerHTML='TOTAL<br><span style="font-size:8px">100%balance+prof</span>';
+});
+</script>
